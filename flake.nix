@@ -9,7 +9,7 @@
     # nixos-anywhere - remote unsupervised nixos installation
   };
 
-  outputs = { self, nixPkgs, ... }: {
+  outputs = { self, nixpkgs, ... }: {
     nixosConfigurations.dorg = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
