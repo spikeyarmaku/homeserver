@@ -140,12 +140,18 @@
   # Don't ask passwd for root user
   services.openssh = {
     enable = true;
-    settings.PermitRootLogin = "prohibit-password";
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "prohibit-password";
+    };
   };
 
   # Allow SSH
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 
+  # Generic settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "dorg" ];
 
   # Homeserver config ------------------------------
   services.jellyfin = {
@@ -155,11 +161,6 @@
 
   services.caddy = {
     enable = true;
-
-    # package = pkgs.caddy.withPlugins {
-    #   plugins = [ "github.com/caddy-dns/porkbun@v0.3.1" ];
-    #   hash = "sha256-JtzeWz9GdW/+1Qft5nU9diPkFQvPGxQkgR8n8w+ryoI=";
-    # };
 
     virtualHosts."jellyfin.orbanviktor.gay".extraConfig = ''
       # tls {
@@ -174,11 +175,5 @@
       }
     '';
   };
-
-  # systemd.services.caddy.serviceConfig.EnvironmentFile = "/etc/caddy/porkbun-caddy.env";
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  programs.git.enable = true;
 }
 
