@@ -1,7 +1,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../common.nix
   ];
   networking.hostName = "sip-minipc";
   time.timeZone = "Europe/London";

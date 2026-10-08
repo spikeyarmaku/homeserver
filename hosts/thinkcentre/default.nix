@@ -1,7 +1,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../common.nix
   ];
   networking.hostName = "thinkcentre";
   time.timeZone = "Europe/Budapest";
