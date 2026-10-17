@@ -4,12 +4,12 @@
   imports = [
     ./hardware-configuration.nix
 
-    ./modules/services/caddy.nix
-    ./modules/services/ddns-updater.nix
-    ./modules/services/fluxer.nix
-    ./modules/services/foundry.nix
-    ./modules/services/jellyfin.nix
-    ./modules/services/uptime-kuma.nix
+    ../../modules/services/caddy.nix
+    ../../modules/services/ddns-updater.nix
+    ../../modules/services/fluxer.nix
+    ../../modules/services/foundry.nix
+    ../../modules/services/jellyfin.nix
+    ../../modules/services/uptime-kuma.nix
   ];
 
   networking.hostName = "thinkcentre";

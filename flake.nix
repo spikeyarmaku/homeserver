@@ -14,7 +14,7 @@
   let
     lib = nixpkgs.lib;
     username = "admin";
-    sharedModules = ./modules
+    sharedModules = ./modules/common
       |> lib.filesystem.listFilesRecursive
       |> lib.filter (lib.hasSuffix ".nix");
     mkSystem = hostname: lib.nixosSystem {
