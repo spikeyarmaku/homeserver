@@ -18,4 +18,18 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Disable NIC offloading
+  systemd.services.disable-nic-offloading = {
+    description = "Disable NIC offloading";
+  
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      ExecStart = "${pkgs.ethtool}/bin/ethtool -K eno2 gso off gro off tso off tx off rx off rxvlan off txvlan off";
+    };
+  
+    # https://systemd.io/NETWORK_ONLINE/
+    wantedBy = [ "network-pre.target" ];
+  };
 }
